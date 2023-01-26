@@ -1,14 +1,12 @@
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import { useEffect, useState } from "react";
 import Circle from "../assets/circle.svg";
+import { RandomNumber } from '../types/TenFrame';
 
-const TenFrame = () => {
+const TenFrame = ({ randomNumber }: {
+	randomNumber: RandomNumber
+}) => {
 	const [frames, setFrames] = useState(['','','','','','','','','','']);
-	const [randomNumber, setRandomNumber] = useState<number | null>(null);
-
-	useEffect(() => {
-		setRandomNumber(Math.floor(Math.random() * 10) + 1);
-	}, []);
 
 	useEffect(() => {;
 		const arr = ['','','','','','','','','',''];
@@ -22,23 +20,24 @@ const TenFrame = () => {
 		setFrames(arr);
 	}, [randomNumber]);
 	return (
-		<View style={tenFrame.container}>
+		<View style={tenFrameStyles.container}>
+			<Text>{randomNumber}</Text>
 			{frames.map((frame, idx) => {
 				if(frame === 'X') {
 					return (
-						<View key={idx} style={tenFrame.frame}>
+						<View key={idx} style={tenFrameStyles.frame}>
 							<Circle />
 						</View>
 					);
 				} else {
-					return <View key={idx} style={tenFrame.frame}></View>
+					return <View key={idx} style={tenFrameStyles.frame}></View>
 				}
 			})}
 		</View>
 	);
 }
 
-const tenFrame = StyleSheet.create({
+const tenFrameStyles = StyleSheet.create({
 	container: {
 		display: 'flex',
 		flexDirection: 'row',

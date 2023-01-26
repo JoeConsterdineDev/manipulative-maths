@@ -1,16 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
 import Header from './components/Header';
-import Input from './components/Input';
-import TenFrame from './components/TenFrame';
+import Quiz from './components/Quiz';
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <Header />
       <View style={styles.body}>
-        <Input />
-        <TenFrame />
+        <Quiz />
         <StatusBar style="auto" />
       </View>
     </SafeAreaView>
