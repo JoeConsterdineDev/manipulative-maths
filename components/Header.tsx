@@ -1,11 +1,18 @@
 import { View, StyleSheet, Text } from 'react-native';
-import Logo from '../assets/logo.svg';
+import { useFonts } from 'expo-font';
 
 const Header = () => {
+	const [fontsLoaded] = useFonts({
+    	'Urbanist-Bold': require('../assets/fonts/Urbanist-Bold.ttf'),
+  	});
+
+	if(!fontsLoaded) {
+		return null;
+	}
+
 	return (
 		<View style={headerStyles.container}>
-			<Logo />
-			<Text style={headerStyles.title}>Manipulative Maths</Text>
+			<Text style={headerStyles.title}>Manipulative <Text style={headerStyles.subTitle}>Maths</Text></Text>
 		</View>
 	)
 }
@@ -19,12 +26,16 @@ const headerStyles = StyleSheet.create({
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-		padding: 8,
+		paddingBottom: 8,
+		paddingTop: 8
 	},
 	title: {
 		color: '#002e63',
+		fontFamily: 'Urbanist-Bold',
 		fontSize: 30,
-		fontWeight: 'bold'
+	},
+	subTitle: {
+		color: '#f48668'
 	}
  });
 
