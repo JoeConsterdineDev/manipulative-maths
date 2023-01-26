@@ -1,15 +1,6 @@
 import { View, StyleSheet, Text } from 'react-native';
-import { useFonts } from 'expo-font';
 
 const Header = () => {
-	const [fontsLoaded] = useFonts({
-    	'Urbanist-Bold': require('../assets/fonts/Urbanist-Bold.ttf'),
-  	});
-
-	if(!fontsLoaded) {
-		return null;
-	}
-
 	return (
 		<View style={headerStyles.container}>
 			<Text style={headerStyles.title}>Manipulative <Text style={headerStyles.subTitle}>Maths</Text></Text>

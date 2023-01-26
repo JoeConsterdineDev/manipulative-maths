@@ -1,3 +1,4 @@
+import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
@@ -7,6 +8,16 @@ import Score from './components/Score';
 
 export default function App() {
   const [currentScore, setCurrentScore] = useState<number>(0);
+
+  const [fontsLoaded] = useFonts({
+    'Urbanist-Regular': require('./assets/fonts/Urbanist-Regular.ttf'),
+    'Urbanist-Bold': require('./assets/fonts/Urbanist-Bold.ttf'),
+  });
+
+  if(!fontsLoaded) {
+    return null;
+  }
+
   const getCurrentScore = (score: number) => {
     setCurrentScore(score);
   }
@@ -29,15 +40,12 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
     flex: 1,
-    justifyContent: 'center',
-    paddingTop: 32
+    paddingTop: 32,
   },
   body: {
     paddingLeft: 16,
     paddingRight: 16,
-    alignItems: 'center',
     flex: 1,
     justifyContent: 'center'
   }

@@ -52,7 +52,9 @@ const Input = ({ randomNumber, incrementScore, incrementQuestionLength }: {
 
 	return (
 		<View style={inputStyles.container}>
-			<Text style={inputStyles.notice}>{notice}</Text>
+			{notice &&
+				<Text style={inputStyles.notice}>{notice}</Text>
+			}
 			<Controller
 				control={control}
 				name="value"
@@ -67,6 +69,7 @@ const Input = ({ randomNumber, incrementScore, incrementQuestionLength }: {
 						ref={inputRef}
 						style={inputStyles.input}
 						selectionColor={'#000'}
+						onSubmitEditing={handleSubmit(onSubmit)}
 					/>
 				)}
 	 		/>
@@ -89,6 +92,7 @@ const inputStyles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	notice: {
+		fontFamily: 'Urbanist-Regular',
 		paddingBottom: 16,
 	},
 	input: {
@@ -108,6 +112,7 @@ const inputStyles = StyleSheet.create({
 		borderRadius: 8,
 		fontSize: 20,
 		display: 'flex',
+		fontFamily: 'Urbanist-Bold',
 		flexDirection: 'row',
 		justifyContent: 'center',
 		alignItems: 'center',
