@@ -1,7 +1,8 @@
-import { View, StyleSheet, Text } from 'react-native';
+import { View } from 'react-native';
 import { useEffect, useState } from "react";
-import Circle from "../assets/circle.svg";
-import { RandomNumber } from '../types/TenFrame';
+import Circle from "../../assets/circle.svg";
+import { RandomNumber } from '../../types/TenFrame';
+import { tenFrameStyles } from './TenFrameStyles';
 
 const TenFrame = ({ randomNumber }: {
 	randomNumber: RandomNumber
@@ -35,31 +36,5 @@ const TenFrame = ({ randomNumber }: {
 		</View>
 	);
 }
-
-const tenFrameStyles = StyleSheet.create({
-	container: {
-		display: 'flex',
-		flexDirection: 'row',
-		flexWrap: 'wrap',
-		borderTopColor: '#777',
-		borderTopWidth: 2,
-		borderLeftColor: '#777',
-		borderLeftWidth: 2,
-	},
-	frame: {
-		alignItems: 'center',
-		display: 'flex',
-		flexGrow: 1,
-		flexShrink: 0,
-		flexBasis: '20%',
-		justifyContent: 'center',
-		borderBottomColor: '#777',
-		borderBottomWidth: 2,
-		borderRightColor: '#777',
-		borderRightWidth: 2,
-		padding: 4,
-		minHeight: 56,
-	}
-});
 
 export default TenFrame;

@@ -1,19 +1,6 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-const Score = ({ score }: {
-	score: number
-}) => {
-	return (
-		<View style={scoreStyles.container}>
-			<Text style={scoreStyles.title}>Score</Text>
-			<View style={scoreStyles.scoreContainer}>
-				<Text style={scoreStyles.score}>{score}</Text>
-			</View>
-		</View>
-	)
-}
-
-const scoreStyles = StyleSheet.create({
+export const scoreStyles = StyleSheet.create({
 	container: {
 		alignItems: 'center',
 		backgroundColor: '#f5f5f5',
@@ -43,6 +30,3 @@ const scoreStyles = StyleSheet.create({
 		fontSize: 20,
 	}
 });
-  
-
-export default Score;

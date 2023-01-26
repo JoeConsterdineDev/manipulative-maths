@@ -1,5 +1,6 @@
 import { Text, Button } from 'react-native';
-import { ResetQuiz } from '../types/TenFrame'
+import { ResetQuiz } from '../../types/TenFrame';
+// import { resultsStyles } from './ResultsStyles';
 
 const Results = ({ resetQuiz }: {
 	resetQuiz: ResetQuiz

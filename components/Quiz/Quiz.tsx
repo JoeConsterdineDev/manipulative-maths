@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Input from './Input';
-import TenFrame from './TenFrame';
-import { Text, StyleSheet } from 'react-native';
-import Results from "./Results";
+import Input from '../Input/Input';
+import TenFrame from '../TenFrame/TenFrame';
+import { Text } from 'react-native';
+import Results from "../Results/Results";
 
 const Quiz = ({ getCurrentScore }: {
 	getCurrentScore: (score: number) => void
