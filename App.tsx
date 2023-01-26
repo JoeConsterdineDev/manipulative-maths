@@ -1,14 +1,26 @@
 import { StatusBar } from 'expo-status-bar';
+import { useState } from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
 import Header from './components/Header';
 import Quiz from './components/Quiz';
+import Score from './components/Score';
 
 export default function App() {
+  const [currentScore, setCurrentScore] = useState<number>(0);
+  const getCurrentScore = (score: number) => {
+    setCurrentScore(score);
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Header />
+      <Score
+        score={currentScore}
+      />
       <View style={styles.body}>
-        <Quiz />
+        <Quiz
+          getCurrentScore={getCurrentScore}
+        />
         <StatusBar style="auto" />
       </View>
     </SafeAreaView>

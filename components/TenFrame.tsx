@@ -21,7 +21,6 @@ const TenFrame = ({ randomNumber }: {
 	}, [randomNumber]);
 	return (
 		<View style={tenFrameStyles.container}>
-			<Text>{randomNumber}</Text>
 			{frames.map((frame, idx) => {
 				if(frame === 'X') {
 					return (

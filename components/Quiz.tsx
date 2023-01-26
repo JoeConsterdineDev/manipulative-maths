@@ -4,7 +4,9 @@ import TenFrame from './TenFrame';
 import { Text, StyleSheet } from 'react-native';
 import Results from "./Results";
 
-const Quiz = () => {
+const Quiz = ({ getCurrentScore }: {
+	getCurrentScore: (score: number) => void
+}) => {
 	const [randomNumber, setRandomNumber] = useState<number | null>(null);
 	const [score, setScore] = useState<number>(0);
   	const [questionsLength, setQuestionsLength] = useState<number>(0);
@@ -30,6 +32,10 @@ const Quiz = () => {
 		setRandomNumber(Math.floor(Math.random() * 10) + 1);
 		setLoading(false);
 	}, [questionsLength]);
+
+	useEffect(() => {
+		getCurrentScore(score);
+	}, [score]);
 	return (
 		<>
 			{loading ? (
@@ -42,7 +48,6 @@ const Quiz = () => {
 						/>
 					): (
 						<>
-							<Text style={quizStyles.score}>{score}</Text>
 							<Input
 								randomNumber={randomNumber}
 								incrementScore={incrementScore}
@@ -58,11 +63,5 @@ const Quiz = () => {
 		</>
 	)
 }
-
-const quizStyles = StyleSheet.create({
-	score: {
-		paddingBottom: 16,
-	}
-});
 
 export default Quiz;

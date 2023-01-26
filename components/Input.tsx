@@ -1,4 +1,4 @@
-import { TextInput, Button, StyleSheet, View, Text } from "react-native";
+import { TextInput, Pressable, StyleSheet, View, Text } from "react-native";
 import { IncrementQuestionLength, IncrementScore, RandomNumber } from '../types/TenFrame';
 import { useForm, Controller } from 'react-hook-form';
 import { useEffect, useRef, useState } from "react";
@@ -19,15 +19,15 @@ const Input = ({ randomNumber, incrementScore, incrementQuestionLength }: {
 		control, 
 		handleSubmit,
 		reset
-	  } = useForm({mode: 'onBlur'})
+	  } = useForm({
+		mode: 'onBlur'
+	});
 	  
-	  const onSubmit = (data: any) => {
+	const onSubmit = (data: any) => {
 		const answer = parseInt(data?.value?.replace(/\D/g, ""));
 
 		// Check if answer is a valid number
 		const isNotValid = isNaN(answer);
-
-		console.log({ answer })
 
 		if(isNotValid || data.value === '') {
 			setNotice('Value must be a number. Please try again.');
@@ -48,7 +48,7 @@ const Input = ({ randomNumber, incrementScore, incrementQuestionLength }: {
 		reset({
 			value: ''
 		});
-	  }
+	}
 
 	return (
 		<View style={inputStyles.container}>
@@ -58,30 +58,69 @@ const Input = ({ randomNumber, incrementScore, incrementQuestionLength }: {
 				name="value"
 				render={({field: {onChange, value, onBlur}}) => (
 					<TextInput
-						placeholder="Enter a number"
+						autoFocus
 						value={value}
 						onBlur={onBlur}
 						onChangeText={value => onChange(value)}
 						keyboardType='numeric'
-						maxLength={10}
+						maxLength={2}
 						ref={inputRef}
+						style={inputStyles.input}
+						selectionColor={'#000'}
 					/>
 				)}
 	 		/>
-			<Button 
-				title='Submit' 
+			<Pressable
 				onPress={handleSubmit(onSubmit)}
-			/>
+				style={inputStyles.button}
+			>
+				<Text style={inputStyles.buttonText}>Submit</Text>
+			</Pressable>
 		</View>
 	)
 }
 
 const inputStyles = StyleSheet.create({
 	container: {
-		paddingBottom: 16,
+		paddingBottom: 32,
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'center',
+		alignItems: 'center',
 	},
 	notice: {
 		paddingBottom: 16,
+	},
+	input: {
+		alignSelf: 'center',
+		borderRadius: 4,
+		borderWidth: 2,
+		borderColor: '#000',
+		fontSize: 20,
+		padding: 8,
+		marginBottom: 16,
+		height: 80,
+		width: 80,
+		textAlign: 'center',
+	},
+	button: {
+		backgroundColor: '#000',
+		borderRadius: 8,
+		fontSize: 20,
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'center',
+		alignItems: 'center',
+		height: 48,
+		width: 120,
+	},
+	buttonText: {
+		color: '#fff',
+		fontSize: 16,
+		fontWeight: 'bold',
+		letterSpacing: 1,
+		textTransform: 'uppercase',
+		textAlign: 'center',
 	}
 });
 

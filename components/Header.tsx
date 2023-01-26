@@ -19,20 +19,18 @@ const Header = () => {
 
 const headerStyles = StyleSheet.create({
 	container: {
-		alignItems: 'center',
-		borderBottomColor: '#f5f5f5',
+		backgroundColor: '#15e8c5',
 		borderBottomWidth: 1,
-		backgroundColor: '#fff',
-		display: 'flex',
-		flexDirection: 'row',
-		justifyContent: 'space-between',
+		borderBottomColor: '#11ba9e',
 		paddingBottom: 8,
-		paddingTop: 8
+		paddingTop: 8,
+		width: '100%',
 	},
 	title: {
 		color: '#002e63',
 		fontFamily: 'Urbanist-Bold',
 		fontSize: 30,
+		textAlign: 'center',
 	},
 	subTitle: {
 		color: '#f48668'
