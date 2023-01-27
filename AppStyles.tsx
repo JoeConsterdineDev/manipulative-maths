@@ -9,8 +9,7 @@ export const appStyles = StyleSheet.create({
 		backgroundColor: '#15e8c5',
 	},
 	body: {
-		paddingLeft: 16,
-		paddingRight: 16,
+		padding: 16,
 		flex: 1,
 		justifyContent: 'center',
 	}

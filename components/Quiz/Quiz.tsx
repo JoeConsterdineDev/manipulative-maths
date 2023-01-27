@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { View } from 'react-native';
 import Input from '../Input/Input';
 import TenFrame from '../TenFrame/TenFrame';
 import { Text } from 'react-native';
@@ -6,6 +7,7 @@ import Results from "../Results/Results";
 import Tick from "../../assets/tick.svg";
 import Cross from "../../assets/cross.svg";
 import { quizStyles } from "./QuizStyles";
+import KeyboardAvoidingWrapper from '../KeyboardAvoidingWrapper/KeyboardAvoidingWrapper';
 
 const Quiz = ({ getCurrentScore, updateStatus, status, updateGameStatus }: {
 	getCurrentScore: (score: number) => void,
@@ -68,18 +70,20 @@ const Quiz = ({ getCurrentScore, updateStatus, status, updateGameStatus }: {
 								/>
 							)}
 							{!status && (
-								<>
-									<Input
-										randomNumber={randomNumber}
-										incrementScore={incrementScore}
-										incrementQuestionLength={incrementQuestionLength}
-										updateStatus={updateStatus}
-										status={status}
-									/>
-									<TenFrame
-										randomNumber={randomNumber}
-									/>
-								</>
+								<KeyboardAvoidingWrapper>
+									<View style={quizStyles.container}>
+										<Input
+											randomNumber={randomNumber}
+											incrementScore={incrementScore}
+											incrementQuestionLength={incrementQuestionLength}
+											updateStatus={updateStatus}
+											status={status}
+										/>
+										<TenFrame
+											randomNumber={randomNumber}
+										/>
+									</View>
+								</KeyboardAvoidingWrapper>
 							)}
 						</>
 					)}
