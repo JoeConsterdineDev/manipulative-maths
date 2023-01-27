@@ -24,24 +24,8 @@ export const inputStyles = StyleSheet.create({
 		width: 80,
 		textAlign: 'center',
 	},
-	button: {
-		backgroundColor: '#000',
-		borderRadius: 8,
-		fontSize: 20,
-		display: 'flex',
-		fontFamily: 'Urbanist-Bold',
-		flexDirection: 'row',
-		justifyContent: 'center',
-		alignItems: 'center',
-		height: 48,
-		width: 120,
-	},
-	buttonText: {
-		color: '#fff',
-		fontSize: 16,
-		fontWeight: 'bold',
-		letterSpacing: 1,
-		textTransform: 'uppercase',
-		textAlign: 'center',
+	label: {
+		fontFamily: 'Urbanist-Regular',
+		paddingBottom: 4,
 	}
 });

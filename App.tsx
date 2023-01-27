@@ -1,10 +1,11 @@
 import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
+import { SafeAreaView, View } from 'react-native';
 import Header from './components/Header/Header';
 import Quiz from './components/Quiz/Quiz';
 import Score from './components/Score/Score';
+import { appStyles } from './AppStyles';
 
 export default function App() {
   const [currentScore, setCurrentScore] = useState<number>(0);
@@ -23,12 +24,12 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={appStyles.container}>
       <Header />
       <Score
         score={currentScore}
       />
-      <View style={styles.body}>
+      <View style={appStyles.body}>
         <Quiz
           getCurrentScore={getCurrentScore}
         />
@@ -37,16 +38,3 @@ export default function App() {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 32,
-  },
-  body: {
-    paddingLeft: 16,
-    paddingRight: 16,
-    flex: 1,
-    justifyContent: 'center'
-  }
-});

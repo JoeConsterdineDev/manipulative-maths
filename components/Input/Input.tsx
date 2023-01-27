@@ -1,7 +1,7 @@
-import { TextInput, Pressable, View, Text } from "react-native";
+import { TextInput, View, Text } from "react-native";
 import { IncrementQuestionLength, IncrementScore, RandomNumber } from '../../types/TenFrame';
 import { useForm, Controller } from 'react-hook-form';
-import { useEffect, useRef, useState } from "react";
+import { useState, useRef } from "react";
 import { inputStyles } from "./InputStyles";
 
 const Input = ({ randomNumber, incrementScore, incrementQuestionLength }: {
@@ -12,17 +12,17 @@ const Input = ({ randomNumber, incrementScore, incrementQuestionLength }: {
 	const [notice, setNotice] = useState<string>('');
 	const inputRef = useRef<TextInput>(null);
 
-	useEffect(() => {
-		reset();
-	}, [notice])
-
 	const {
 		control, 
 		handleSubmit,
-		reset
-	  } = useForm({
-		mode: 'onBlur'
+		reset,
+	} = useForm({
+		mode: 'onSubmit'
 	});
+
+	// useEffect(() => {
+	// 	reset();
+	// }, [notice]);
 	  
 	const onSubmit = (data: any) => {
 		const answer = parseInt(data?.value?.replace(/\D/g, ""));
@@ -49,6 +49,13 @@ const Input = ({ randomNumber, incrementScore, incrementQuestionLength }: {
 		reset({
 			value: ''
 		});
+
+		// Re-focus input
+		setTimeout(() => {
+			if (inputRef.current){
+				inputRef.current.focus()
+			}
+		}, 0)
 	}
 
 	return (
@@ -60,26 +67,28 @@ const Input = ({ randomNumber, incrementScore, incrementQuestionLength }: {
 				control={control}
 				name="value"
 				render={({field: {onChange, value, onBlur}}) => (
-					<TextInput
-						autoFocus
-						value={value}
-						onBlur={onBlur}
-						onChangeText={value => onChange(value)}
-						keyboardType='numeric'
-						maxLength={2}
-						ref={inputRef}
-						style={inputStyles.input}
-						selectionColor={'#000'}
-						onSubmitEditing={handleSubmit(onSubmit)}
-					/>
+					<>
+						<Text 
+							onPress={() => inputRef.current && inputRef.current.focus()}
+							style={inputStyles.label}
+						>
+							Enter number
+						</Text>
+						<TextInput
+							autoFocus
+							value={value}
+							onBlur={onBlur}
+							onChangeText={value => onChange(value)}
+							keyboardType='numeric'
+							maxLength={2}
+							style={inputStyles.input}
+							selectionColor={'#000'}
+							ref={inputRef}
+							onSubmitEditing={handleSubmit(onSubmit)}
+						/>
+					</>
 				)}
 	 		/>
-			<Pressable
-				onPress={handleSubmit(onSubmit)}
-				style={inputStyles.button}
-			>
-				<Text style={inputStyles.buttonText}>Submit</Text>
-			</Pressable>
 		</View>
 	)
 }

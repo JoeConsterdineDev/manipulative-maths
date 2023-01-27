@@ -44,7 +44,9 @@ const Quiz = ({ getCurrentScore }: {
 				<>
 					{questionsLength === 10 ? (
 						<Results
+							questionsLength={questionsLength}
 							resetQuiz={resetQuiz}
+							score={score}
 						/>
 					): (
 						<>
