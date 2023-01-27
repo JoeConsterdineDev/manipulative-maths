@@ -88,6 +88,7 @@ const Input = ({ randomNumber, incrementScore, incrementQuestionLength, updateSt
 							onBlur={onBlur}
 							onChangeText={value => onChange(value)}
 							keyboardType='numeric'
+							returnKeyType={'done'}
 							maxLength={2}
 							style={inputStyles.input}
 							selectionColor={'#000'}
