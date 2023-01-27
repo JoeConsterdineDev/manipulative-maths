@@ -9,6 +9,11 @@ import { appStyles } from './AppStyles';
 
 export default function App() {
   const [currentScore, setCurrentScore] = useState<number>(0);
+  const [status, setStatus] = useState<string>('');
+
+  const updateStatus = (status: string) => {
+    setStatus(status);
+  }
 
   const [fontsLoaded] = useFonts({
     'Urbanist-Regular': require('./assets/fonts/Urbanist-Regular.ttf'),
@@ -32,6 +37,8 @@ export default function App() {
       <View style={appStyles.body}>
         <Quiz
           getCurrentScore={getCurrentScore}
+          updateStatus={updateStatus}
+          status={status}
         />
         <StatusBar style="auto" />
       </View>

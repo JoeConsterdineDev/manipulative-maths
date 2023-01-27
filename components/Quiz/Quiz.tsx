@@ -3,9 +3,14 @@ import Input from '../Input/Input';
 import TenFrame from '../TenFrame/TenFrame';
 import { Text } from 'react-native';
 import Results from "../Results/Results";
+import Tick from "../../assets/tick.svg";
+import Cross from "../../assets/cross.svg";
+import { quizStyles } from "./QuizStyles";
 
-const Quiz = ({ getCurrentScore }: {
-	getCurrentScore: (score: number) => void
+const Quiz = ({ getCurrentScore, updateStatus, status }: {
+	getCurrentScore: (score: number) => void,
+	updateStatus: (status: string) => void,
+	status: string
 }) => {
 	const [randomNumber, setRandomNumber] = useState<number | null>(null);
 	const [score, setScore] = useState<number>(0);
@@ -50,14 +55,30 @@ const Quiz = ({ getCurrentScore }: {
 						/>
 					): (
 						<>
-							<Input
-								randomNumber={randomNumber}
-								incrementScore={incrementScore}
-								incrementQuestionLength={incrementQuestionLength}
-							/>
-							<TenFrame
-								randomNumber={randomNumber}
-							/>
+							{status === 'correct' && (
+								<Tick 
+									style={quizStyles.icon} 
+								/>
+							)}
+							{status === 'incorrect' && (
+								<Cross
+									style={quizStyles.icon} 
+								/>
+							)}
+							{!status && (
+								<>
+									<Input
+										randomNumber={randomNumber}
+										incrementScore={incrementScore}
+										incrementQuestionLength={incrementQuestionLength}
+										updateStatus={updateStatus}
+										status={status}
+									/>
+									<TenFrame
+										randomNumber={randomNumber}
+									/>
+								</>
+							)}
 						</>
 					)}
 				</>

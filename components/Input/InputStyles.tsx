@@ -14,6 +14,7 @@ export const inputStyles = StyleSheet.create({
 	},
 	input: {
 		alignSelf: 'center',
+		backgroundColor: '#fff',
 		borderRadius: 4,
 		borderWidth: 2,
 		borderColor: '#000',
@@ -27,5 +28,5 @@ export const inputStyles = StyleSheet.create({
 	label: {
 		fontFamily: 'Urbanist-Regular',
 		paddingBottom: 4,
-	}
+	},
 });

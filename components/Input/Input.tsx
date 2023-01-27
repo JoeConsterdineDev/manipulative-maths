@@ -3,26 +3,29 @@ import { IncrementQuestionLength, IncrementScore, RandomNumber } from '../../typ
 import { useForm, Controller } from 'react-hook-form';
 import { useState, useRef } from "react";
 import { inputStyles } from "./InputStyles";
+import { useEffect } from "react";
 
-const Input = ({ randomNumber, incrementScore, incrementQuestionLength }: {
+const Input = ({ randomNumber, incrementScore, incrementQuestionLength, updateStatus, status }: {
 	randomNumber: RandomNumber,
 	incrementScore: IncrementScore,
-	incrementQuestionLength: IncrementQuestionLength
+	incrementQuestionLength: IncrementQuestionLength,
+	updateStatus: (status: string) => void,
+	status: string
 }) => {
 	const [notice, setNotice] = useState<string>('');
 	const inputRef = useRef<TextInput>(null);
+
+	useEffect(() => {
+		console.log({ status });
+	}, [status])
 
 	const {
 		control, 
 		handleSubmit,
 		reset,
 	} = useForm({
-		mode: 'onSubmit'
+		mode: 'onBlur'
 	});
-
-	// useEffect(() => {
-	// 	reset();
-	// }, [notice]);
 	  
 	const onSubmit = (data: any) => {
 		const answer = parseInt(data?.value?.replace(/\D/g, ""));
@@ -43,6 +46,11 @@ const Input = ({ randomNumber, incrementScore, incrementQuestionLength }: {
 		// If user answer is equal to random number increment score by 1
 		if(answer === randomNumber) {
 			incrementScore();
+			updateStatus('correct');
+			setTimeout(() => updateStatus(''), 500);
+		} else {
+			updateStatus('incorrect');
+			setTimeout(() => updateStatus(''), 500);
 		}
 
 		// Reset input value
@@ -55,7 +63,7 @@ const Input = ({ randomNumber, incrementScore, incrementQuestionLength }: {
 			if (inputRef.current){
 				inputRef.current.focus()
 			}
-		}, 0)
+		}, 0);
 	}
 
 	return (

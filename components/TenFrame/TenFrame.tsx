@@ -1,6 +1,7 @@
 import { View } from 'react-native';
 import { useEffect, useState } from "react";
 import Circle from "../../assets/circle.svg";
+import CircleLight from "../../assets/circle-light.svg";
 import { RandomNumber } from '../../types/TenFrame';
 import { tenFrameStyles } from './TenFrameStyles';
 
@@ -30,7 +31,11 @@ const TenFrame = ({ randomNumber }: {
 						</View>
 					);
 				} else {
-					return <View key={idx} style={tenFrameStyles.frame}></View>
+					return (
+						<View key={idx} style={tenFrameStyles.frame}>
+							<CircleLight />
+						</View>
+					);
 				}
 			})}
 		</View>
