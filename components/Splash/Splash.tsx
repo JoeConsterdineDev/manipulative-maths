@@ -8,9 +8,8 @@ const Splash = ({ updateGameStatus }: SplashTypes) => {
 	}
 	return (
 		<View style={splashStyles.container}>
-			<Text style={splashStyles.title}>
-				Manipulative 
-				<Text style={splashStyles.subTitle}>Maths</Text></Text>
+			<Text style={splashStyles.title}>Manipulative <Text style={splashStyles.subTitle}>Maths</Text>
+			</Text>
 			<Pressable 
 				onPress={handleOnSubmit}
 				style={splashStyles.button}
