@@ -2,8 +2,8 @@
 
 Manipulative Maths is a simple and fun mobile app built for children to improve their Math's skills.
 
-![splash](https://user-images.githubusercontent.com/121115870/215000887-3fce6203-438e-477d-813f-63226a570a75.jpeg)
-![quiz](https://user-images.githubusercontent.com/121115870/215000911-6209dc97-f82a-4d22-b682-822cb78752cc.jpeg)
+![home](https://user-images.githubusercontent.com/121115870/215093979-31c4932e-9d4b-4a9e-928b-12c3309e17e4.png)
+![quiz](https://user-images.githubusercontent.com/121115870/215093981-e95e272e-8ce7-4b77-9b02-e4db7bc4f758.png)
 
 ## How To Run Locally
 
