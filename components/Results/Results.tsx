@@ -2,6 +2,7 @@ import { View, Text, Pressable } from 'react-native';
 import { ResultsTypes } from './ResultsTypes';
 import { buttonStyles } from '../../helpers/ButtonStyles';
 import { resultsStyles } from './ResultsStyles';
+import Star from "../../assets/star.svg";
 
 const Results = ({ 
 	resetQuiz, 
@@ -24,7 +25,19 @@ const Results = ({
 
 	return (
 		<View style={resultsStyles.container}>
-			<Text style={resultsStyles.notice}>You scored <Text style={resultsStyles.highlight}>{score}</Text> out of <Text style={resultsStyles.highlight}>{questionsLength}</Text></Text>
+			<View style={resultsStyles.notice}>
+				<Text style={resultsStyles.text}>You scored </Text> 
+				<Text style={[
+					resultsStyles.text,
+					resultsStyles.highlight
+				]}>{score} </Text> 
+				<Text style={resultsStyles.text}>out of </Text>
+				<Text style={[
+					resultsStyles.text,
+					resultsStyles.highlight
+				]}>{questionsLength}</Text>
+				<Star style={resultsStyles.icon} />
+			</View>
 			<View style={resultsStyles.options}>
 				<Pressable 
 					onPress={() => handleOnSubmit('play')}

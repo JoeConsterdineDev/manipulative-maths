@@ -7,8 +7,9 @@ export const resultsStyles = StyleSheet.create({
 		flexDirection: 'column',
 	},
 	notice: {
-		fontSize: 18,
-		fontFamily: 'Urbanist-Bold',
+		alignItems: 'center',
+		display: 'flex',
+		flexDirection: 'row',
 		paddingBottom: 16
 	},
 	options: {
@@ -27,6 +28,13 @@ export const resultsStyles = StyleSheet.create({
 		color: '#000',
 	},
 	highlight: {
-		color: '#f48668',
+		color: '#f48668'
+	},
+	icon: {
+		marginLeft: 4,
+	},
+	text: {
+		fontFamily: 'Urbanist-Bold',
+		fontSize: 18
 	}
 });

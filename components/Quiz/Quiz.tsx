@@ -81,7 +81,6 @@ const Quiz = ({
 											incrementScore={incrementScore}
 											incrementQuestionLength={incrementQuestionLength}
 											updateStatus={updateStatus}
-											status={status}
 										/>
 										<TenFrame
 											randomNumber={randomNumber}
