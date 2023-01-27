@@ -1,15 +1,16 @@
 import { Pressable, View, Text } from "react-native";
 import { splashStyles } from "./SplashStyles";
+import { SplashTypes } from "./SplashTypes";
 
-const Splash = ({ updateGameStatus }: {
-	updateGameStatus: (status: boolean) => void
-}) => {
+const Splash = ({ updateGameStatus }: SplashTypes) => {
 	const handleOnSubmit = () => {
 		updateGameStatus(true);
 	}
 	return (
 		<View style={splashStyles.container}>
-			<Text style={splashStyles.title}>Manipulative <Text style={splashStyles.subTitle}>Maths</Text></Text>
+			<Text style={splashStyles.title}>
+				Manipulative 
+				<Text style={splashStyles.subTitle}>Maths</Text></Text>
 			<Pressable 
 				onPress={handleOnSubmit}
 				style={splashStyles.button}

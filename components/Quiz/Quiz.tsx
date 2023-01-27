@@ -8,13 +8,15 @@ import Tick from "../../assets/tick.svg";
 import Cross from "../../assets/cross.svg";
 import { quizStyles } from "./QuizStyles";
 import KeyboardAvoidingWrapper from '../KeyboardAvoidingWrapper/KeyboardAvoidingWrapper';
+import { QuizTypes } from "./QuizTypes";
 
-const Quiz = ({ getCurrentScore, updateStatus, status, updateGameStatus }: {
-	getCurrentScore: (score: number) => void,
-	updateStatus: (status: string) => void,
-	status: string,
-	updateGameStatus: (status: boolean) => void
-}) => {
+const Quiz = ({ 
+	getCurrentScore, 
+	updateStatus, 
+	status, 
+	updateGameStatus 
+	}: QuizTypes) => {
+
 	const [randomNumber, setRandomNumber] = useState<number | null>(null);
 	const [score, setScore] = useState<number>(0);
   	const [questionsLength, setQuestionsLength] = useState<number>(0);
@@ -36,11 +38,13 @@ const Quiz = ({ getCurrentScore, updateStatus, status, updateGameStatus }: {
 		setScore(0);
 	}
 	
+	// Generate new random number per question
 	useEffect(() => {
 		setRandomNumber(Math.floor(Math.random() * 10) + 1);
 		setLoading(false);
 	}, [questionsLength]);
 
+	// Get current score
 	useEffect(() => {
 		getCurrentScore(score);
 	}, [score]);

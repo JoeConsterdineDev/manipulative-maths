@@ -1,24 +1,20 @@
 import { TextInput, View, Text } from "react-native";
-import { IncrementQuestionLength, IncrementScore, RandomNumber } from '../../types/TenFrame';
 import { useForm, Controller } from 'react-hook-form';
 import { useState, useRef } from "react";
 import { inputStyles } from "./InputStyles";
-import { useEffect } from "react";
+import { InputTypes } from "./InputTypes";
 
-const Input = ({ randomNumber, incrementScore, incrementQuestionLength, updateStatus, status }: {
-	randomNumber: RandomNumber,
-	incrementScore: IncrementScore,
-	incrementQuestionLength: IncrementQuestionLength,
-	updateStatus: (status: string) => void,
-	status: string
-}) => {
+const Input = ({ 
+	randomNumber, 
+	incrementScore, 
+	incrementQuestionLength, 
+	updateStatus }: 
+	InputTypes) => {
+
 	const [notice, setNotice] = useState<string>('');
 	const inputRef = useRef<TextInput>(null);
 
-	useEffect(() => {
-		console.log({ status });
-	}, [status])
-
+	// Form settings
 	const {
 		control, 
 		handleSubmit,
@@ -44,13 +40,14 @@ const Input = ({ randomNumber, incrementScore, incrementQuestionLength, updateSt
 		incrementQuestionLength();
 
 		// If user answer is equal to random number increment score by 1
+		const statusUpdate = setTimeout(() => updateStatus(''), 300);
 		if(answer === randomNumber) {
 			incrementScore();
 			updateStatus('correct');
-			setTimeout(() => updateStatus(''), 300);
+			statusUpdate;
 		} else {
 			updateStatus('incorrect');
-			setTimeout(() => updateStatus(''), 300);
+			statusUpdate;
 		}
 
 		// Reset input value
@@ -60,17 +57,13 @@ const Input = ({ randomNumber, incrementScore, incrementQuestionLength, updateSt
 
 		// Re-focus input
 		setTimeout(() => {
-			if (inputRef.current){
-				inputRef.current.focus()
-			}
+			if(inputRef.current) inputRef.current.focus();
 		}, 0);
 	}
 
 	return (
 		<View style={inputStyles.container}>
-			{notice &&
-				<Text style={inputStyles.notice}>{notice}</Text>
-			}
+			{notice && <Text style={inputStyles.notice}>{notice}</Text>}
 			<Controller
 				control={control}
 				name="value"

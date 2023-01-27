@@ -1,18 +1,21 @@
 import { View, Text, Pressable } from 'react-native';
-import { ResetQuiz } from '../../types/TenFrame';
+import { ResultsTypes } from './ResultsTypes';
 import { resultsStyles } from './ResultsStyles';
 
-const Results = ({ resetQuiz, score, questionsLength, updateGameStatus }: {
-	resetQuiz: ResetQuiz,
-	score: number
-	questionsLength: number,
-	updateGameStatus: (status: boolean) => void
-}) => {
+const Results = ({ 
+	resetQuiz, 
+	score, 
+	questionsLength, 
+	updateGameStatus 
+	}: ResultsTypes) => {
+
 	const handleOnSubmit = (state: string) => {
+		// If play again or home reset quiz state
 		if(state === 'play' || state === 'home') {
 			resetQuiz();
 		}
 
+		// If home return to splash screen
 		if(state === 'home') {
 			updateGameStatus(false);
 		}

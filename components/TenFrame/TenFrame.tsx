@@ -2,12 +2,10 @@ import { View } from 'react-native';
 import { useEffect, useState } from "react";
 import Circle from "../../assets/circle.svg";
 import CircleLight from "../../assets/circle-light.svg";
-import { RandomNumber } from '../../types/TenFrame';
 import { tenFrameStyles } from './TenFrameStyles';
+import { TenFrameTypes } from './TenFrameTypes';
 
-const TenFrame = ({ randomNumber }: {
-	randomNumber: RandomNumber
-}) => {
+const TenFrame = ({ randomNumber }: TenFrameTypes) => {
 	const [frames, setFrames] = useState(['','','','','','','','','','']);
 
 	useEffect(() => {;
