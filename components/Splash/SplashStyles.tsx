@@ -1,19 +1,12 @@
 import { StyleSheet } from 'react-native';
 
-export const resultsStyles = StyleSheet.create({
+export const splashStyles = StyleSheet.create({
 	container: {
+		backgroundColor: '#15e8c5',
+		display: 'flex',
+		justifyContent: 'center',
 		alignItems: 'center',
-		display: 'flex',
-		flexDirection: 'column',
-	},
-	notice: {
-		fontSize: 18,
-		fontFamily: 'Urbanist-Bold',
-		paddingBottom: 16
-	},
-	options: {
-		display: 'flex',
-		flexDirection: 'row',
+		height: '100%'
 	},
 	button: {
 		backgroundColor: '#000',
@@ -24,14 +17,8 @@ export const resultsStyles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'center',
 		alignItems: 'center',
-		marginRight: 12,
 		height: 48,
 		width: 120,
-	},
-	buttonSecondary: {
-		backgroundColor: '#fff',
-		borderWidth: 1,
-		borderColor: '#000',
 	},
 	buttonText: {
 		color: '#fff',
@@ -42,10 +29,14 @@ export const resultsStyles = StyleSheet.create({
 		textTransform: 'uppercase',
 		textAlign: 'center',
 	},
-	buttonSecondaryText: {
-		color: '#000',
+	title: {
+		color: '#002e63',
+		fontFamily: 'Urbanist-Bold',
+		fontSize: 30,
+		textAlign: 'center',
+		paddingBottom: 16
 	},
-	highlight: {
-		color: '#f48668',
+	subTitle: {
+		color: '#f48668'
 	}
 });

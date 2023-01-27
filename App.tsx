@@ -6,13 +6,19 @@ import Header from './components/Header/Header';
 import Quiz from './components/Quiz/Quiz';
 import Score from './components/Score/Score';
 import { appStyles } from './AppStyles';
+import Splash from './components/Splash/Splash';
 
 export default function App() {
   const [currentScore, setCurrentScore] = useState<number>(0);
+  const [gameStatus, setGameStatus] = useState<boolean>(false);
   const [status, setStatus] = useState<string>('');
 
   const updateStatus = (status: string) => {
     setStatus(status);
+  }
+
+  const updateGameStatus = (status: boolean) => {
+    setGameStatus(status);
   }
 
   const [fontsLoaded] = useFonts({
@@ -29,19 +35,31 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView style={appStyles.container}>
-      <Header />
-      <Score
-        score={currentScore}
-      />
-      <View style={appStyles.body}>
-        <Quiz
-          getCurrentScore={getCurrentScore}
-          updateStatus={updateStatus}
-          status={status}
+    <SafeAreaView style={[
+      appStyles.container,
+      !gameStatus ? appStyles.containerSplash : null
+    ]}>
+      {gameStatus ? (
+        <>
+          <Header />
+          <Score
+            score={currentScore}
+          />
+          <View style={appStyles.body}>
+            <Quiz
+              getCurrentScore={getCurrentScore}
+              updateGameStatus={updateGameStatus}
+              updateStatus={updateStatus}
+              status={status}
+            />
+            <StatusBar style="auto" />
+          </View>
+        </>
+      ) : (
+        <Splash
+          updateGameStatus={updateGameStatus}
         />
-        <StatusBar style="auto" />
-      </View>
+      )}
     </SafeAreaView>
   );
 }

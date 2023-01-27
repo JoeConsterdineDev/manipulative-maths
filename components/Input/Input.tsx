@@ -47,10 +47,10 @@ const Input = ({ randomNumber, incrementScore, incrementQuestionLength, updateSt
 		if(answer === randomNumber) {
 			incrementScore();
 			updateStatus('correct');
-			setTimeout(() => updateStatus(''), 500);
+			setTimeout(() => updateStatus(''), 300);
 		} else {
 			updateStatus('incorrect');
-			setTimeout(() => updateStatus(''), 500);
+			setTimeout(() => updateStatus(''), 300);
 		}
 
 		// Reset input value

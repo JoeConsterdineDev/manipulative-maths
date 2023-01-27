@@ -7,10 +7,11 @@ import Tick from "../../assets/tick.svg";
 import Cross from "../../assets/cross.svg";
 import { quizStyles } from "./QuizStyles";
 
-const Quiz = ({ getCurrentScore, updateStatus, status }: {
+const Quiz = ({ getCurrentScore, updateStatus, status, updateGameStatus }: {
 	getCurrentScore: (score: number) => void,
 	updateStatus: (status: string) => void,
-	status: string
+	status: string,
+	updateGameStatus: (status: boolean) => void
 }) => {
 	const [randomNumber, setRandomNumber] = useState<number | null>(null);
 	const [score, setScore] = useState<number>(0);
@@ -50,6 +51,7 @@ const Quiz = ({ getCurrentScore, updateStatus, status }: {
 					{questionsLength === 10 ? (
 						<Results
 							questionsLength={questionsLength}
+							updateGameStatus={updateGameStatus}
 							resetQuiz={resetQuiz}
 							score={score}
 						/>
