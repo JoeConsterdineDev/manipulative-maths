@@ -24,7 +24,7 @@ const Input = ({
 	});
 	  
 	const onSubmit = (data: any) => {
-		const answer = parseInt(data?.value?.replace(/\D/g, ""));
+		const answer = parseInt(data?.value);
 
 		// Check if answer is a valid number
 		const isNotValid = isNaN(answer);
@@ -79,7 +79,7 @@ const Input = ({
 							autoFocus
 							value={value}
 							onBlur={onBlur}
-							onChangeText={value => onChange(value)}
+							onChangeText={value => onChange(value.replace(/\D/g, ""))}
 							keyboardType='numeric'
 							returnKeyType={'done'}
 							maxLength={2}
