@@ -1,5 +1,6 @@
 import { View, Text, Pressable } from 'react-native';
 import { ResultsTypes } from './ResultsTypes';
+import { buttonStyles } from '../../helpers/ButtonStyles';
 import { resultsStyles } from './ResultsStyles';
 
 const Results = ({ 
@@ -27,19 +28,22 @@ const Results = ({
 			<View style={resultsStyles.options}>
 				<Pressable 
 					onPress={() => handleOnSubmit('play')}
-					style={resultsStyles.button}
+					style={[
+						buttonStyles.button,
+						resultsStyles.button
+					]}
 				>
-					<Text style={resultsStyles.buttonText}>Play again</Text>
+					<Text style={buttonStyles.buttonText}>Play again</Text>
 				</Pressable>
 				<Pressable 
 					onPress={() => handleOnSubmit('home')}
 					style={[
-						resultsStyles.button,
+						buttonStyles.button,
 						resultsStyles.buttonSecondary
 					]}
 				>
 					<Text style={[
-						resultsStyles.buttonText,
+						buttonStyles.buttonText,
 						resultsStyles.buttonSecondaryText
 					]}>Home</Text>
 				</Pressable>

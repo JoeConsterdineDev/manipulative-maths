@@ -1,5 +1,6 @@
 import { Pressable, View, Text } from "react-native";
 import { splashStyles } from "./SplashStyles";
+import { buttonStyles } from '../../helpers/ButtonStyles';
 import { SplashTypes } from "./SplashTypes";
 
 const Splash = ({ updateGameStatus }: SplashTypes) => {
@@ -12,9 +13,9 @@ const Splash = ({ updateGameStatus }: SplashTypes) => {
 			</Text>
 			<Pressable 
 				onPress={handleOnSubmit}
-				style={splashStyles.button}
+				style={buttonStyles.button}
 			>
-				<Text style={splashStyles.buttonText}>Play</Text>
+				<Text style={buttonStyles.buttonText}>Play</Text>
 			</Pressable>
 		</View>
 	)
